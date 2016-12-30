@@ -15,7 +15,7 @@ defmodule Cerradura.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     # Specify extra applications you'll use from Erlang/Elixir
-    [extra_applications: [:logger, :exexif, :sweet_xml, :xml_builder]]
+    [extra_applications: [:logger, :exexif, :sweet_xml, :xml_builder, :geocoder]]
   end
 
   # Dependencies can be Hex packages:
@@ -31,7 +31,8 @@ defmodule Cerradura.Mixfile do
     [
       {:sweet_xml, "~> 0.6.3"},
       {:xml_builder, "~> 0.0.8"},
-      {:exexif, github: "am-kantox/exexif"}
+      {:exexif, github: "am-kantox/exexif"},
+      {:geocoder, github: "knrz/geocoder"}
     ]
   end
 end
