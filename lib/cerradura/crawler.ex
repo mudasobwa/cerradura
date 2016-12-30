@@ -1,4 +1,7 @@
 defmodule Cerradura.Crawler do
+  @moduledoc """
+  The default behaviour for all the crawlers.
+  """
   @callback crawl(any, List.t) :: any
 
   @spec crawl(Atom.t, any, List.t) :: any

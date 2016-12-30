@@ -4,7 +4,7 @@ defmodule Cerradura.Mixfile do
   def project do
     [app: :cerradura,
      version: "0.1.0",
-     elixir: "~> 1.5-dev",
+     elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps()]
@@ -32,7 +32,10 @@ defmodule Cerradura.Mixfile do
       {:sweet_xml, "~> 0.6.3"},
       {:xml_builder, "~> 0.0.8"},
       {:exexif, github: "am-kantox/exexif"},
-      {:geocoder, github: "knrz/geocoder"}
+      {:geocoder, github: "knrz/geocoder"},
+
+      {:credo, "~> 0.4", only: :dev},
+      {:ex_doc, "~> 0.11", only: :dev}
     ]
   end
 end

@@ -1,4 +1,7 @@
 defmodule Cerradura.Utils.Converters do
+  @moduledoc """
+  Handy utilities to convert different formats.
+  """
 
   @round_to 7
 
