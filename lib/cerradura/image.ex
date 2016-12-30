@@ -1,6 +1,4 @@
 defmodule Cerradura.Image do
-  require Cerradura.Utils.Converters, as: C
-
   @moduledoc """
   Here is how it comes from `Exexif` library:
 
@@ -72,15 +70,7 @@ defmodule Cerradura.Image do
       "BCN"
   """
   def address!(%Cerradura.Image{gps: gps, address: nil} = data) do
-    case {C.latlon(gps.gps_latitude), C.latlon(gps.gps_longitude)} do
-      {nil, nil} -> data
-      {nil, _}   -> data
-      {_, nil}   -> data
-      {lat, lon} ->
-        with {:ok, address} = Geocoder.call_list({lat, lon}) do
-          {[h], t} = Enum.split(address, 1)
-          %Cerradura.Image{data | address: h, addresses: (if Enum.empty?(t), do: nil, else: t)}
-        end
-    end
+    %{address: address, addresses: addresses} = Cerradura.Crawlers.Geo.crawl(gps)
+    %Cerradura.Image{data | address: address, addresses: addresses}
   end
 end

@@ -45,7 +45,7 @@ defmodule Cerradura.Images do
   def new(path) do
     keys = Path.wildcard(path)
     values = keys
-             |> Stream.map(& Exexif.exif_from_jpeg_file!(&1))
+             |> Stream.map(& Cerradura.Image.new(&1))
              |> Enum.to_list
     images = [keys, values]
              |> List.zip
