@@ -35,7 +35,9 @@ defmodule Cerradura.Mixfile do
       {:geocoder, github: "knrz/geocoder"},
 
       {:credo, "~> 0.4", only: :dev},
-      {:ex_doc, "~> 0.11", only: :dev}
+      {:ex_doc, "~> 0.11", only: :dev},
+
+      {:mock, "~> 0.2", only: :test}
     ]
   end
 end

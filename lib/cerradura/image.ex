@@ -59,15 +59,6 @@ defmodule Cerradura.Image do
 
   @doc """
   Retrieves the address from remote. NB! Blocking!
-
-  ## Examples
-
-      iex> image = "test/images/IMG_20160522_122319.jpg"
-      ...> image = image |> Cerradura.Image.new |> Cerradura.Image.address!
-      ...> IO.puts inspect(image.address)
-      :ok
-      iex> image.address.location.city
-      "BCN"
   """
   def address!(%Cerradura.Image{gps: gps, address: nil} = data) do
     %{address: address, addresses: addresses} = Cerradura.Crawlers.Geo.crawl(gps)
