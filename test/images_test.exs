@@ -7,37 +7,7 @@ defmodule Cerradura.Images.Test do
   test "there are images in the respective folder" do
     with {:ok, list} <- File.ls(@images_dir) do
       assert Enum.count(list) == 29
-      assert list == ~w|
-        IMG_20160522_123640.jpg
-        IMG_20160522_123153.jpg
-        IMG_20160522_121928.jpg
-        IMG_20160522_123632.jpg
-        IMG_20160522_121835.jpg
-        IMG_20160522_123208.jpg
-        IMG_20160522_122319.jpg
-        IMG_20160522_121534.jpg
-        IMG_20160522_123013.jpg
-        IMG_20160522_123944.jpg
-        IMG_20160522_121735.jpg
-        IMG_20160522_125339.jpg
-        IMG_20160522_123915.jpg
-        IMG_20160522_125042.jpg
-        IMG_20160522_125013.jpg
-        IMG_20160522_122115.jpg
-        IMG_20160522_122643.jpg
-        IMG_20160522_123537.jpg
-        IMG_20160522_121751.jpg
-        IMG_20160522_125650.jpg
-        IMG_20160522_121952.jpg
-        IMG_20160522_130417.jpg
-        IMG_20160522_122042.jpg
-        IMG_20160522_122347.jpg
-        IMG_20160522_122102.jpg
-        IMG_20160522_122131.jpg
-        IMG_20160522_121806.jpg
-        IMG_20160522_123823.jpg
-        IMG_20160522_122352.jpg
-      |
+      assert list |> Enum.map(& String.slice(&1, 0..11)) |> Enum.uniq == ~w|IMG_20160522|
     end
   end
 
